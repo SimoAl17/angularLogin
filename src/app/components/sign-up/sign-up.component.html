@@ -1,1 +1,53 @@
-<p>sign-up works!</p>
+<div class="container">
+    <div class="form-container">
+        <h2>Register</h2>
+        <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input id="username" formControlName="username" matInput placeholder="Placeholder" type="text">
+                <mat-icon (click)="registerForm.controls['username'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='registerForm.controls["username"].touched && registerForm.controls["username"].invalid'>
+                <mat-error *ngIf="registerForm.controls['username'].errors && registerForm.controls['username'].errors['required']">Username obbligatorio</mat-error>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input id="password" formControlName="password" matInput placeholder="Placeholder" type="password">
+                <mat-icon (click)="registerForm.controls['password'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='registerForm.controls["password"].touched && registerForm.controls["password"].invalid'>
+                <mat-error *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].errors['required']">Password obbligatoria</mat-error>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input id="pswConfirm" formControlName="pswConfirm" matInput placeholder="Placeholder" type="password">
+                <mat-icon (click)="registerForm.controls['pswConfirm'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='registerForm.controls["pswConfirm"].touched && registerForm.controls["pswConfirm"].invalid'>
+                <mat-error *ngIf="registerForm.controls['pswConfirm'].errors && registerForm.controls['pswConfirm'].errors['required']">Password obbligatoria</mat-error>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Mail</mat-label>
+                <input id="mail" formControlName="mail" matInput placeholder="Placeholder" type="email">
+                <mat-icon (click)="registerForm.controls['mail'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='registerForm.controls["mail"].touched && registerForm.controls["mail"].invalid'>
+                <mat-error *ngIf="registerForm.controls['mail'].errors && registerForm.controls['mail'].errors['required']">Mail obbligatoria</mat-error>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input id="dob" formControlName="dob" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf='registerForm.controls["dob"].touched && registerForm.controls["dob"].invalid'>
+                <mat-error *ngIf="registerForm.controls['dob'].errors && registerForm.controls['dob'].errors['required']">Dob obbligatoria</mat-error>
+            </div>
+            <button type="submit" mat-raised-button color="accent" [disabled]="registerForm.invalid">Register</button>
+        </form>
+    </div>
+</div>

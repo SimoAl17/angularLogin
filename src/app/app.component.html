@@ -1,19 +1,16 @@
 <div class="container">
+
   <mat-toolbar color="primary">
-    
-    <mat-toolbar-row>
-      <span>{{title}}</span>
-      <span class="spacer"></span>
-      <button routerLink="home" mat-flat-button color="primary">Home</button>
-      <button routerLink="private" mat-flat-button color="primary">Private</button>
-      <button routerLink="login" mat-flat-button color="primary">Login/SignUp</button>
-    </mat-toolbar-row>
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <button routerLink="welcome" mat-flat-button color="primary">Home</button>
+    <button routerLink="private" mat-flat-button color="primary">Private</button>
+    <button *ngIf="!auth.isAuth" routerLink="login" mat-flat-button color="primary">Login/Register</button>
+    <button *ngIf="auth.isAuth" (click)="logOut()" mat-flat-button color="primary">Logout</button>
   </mat-toolbar>
 
-  <div class="content">
+  <div class="page-content">
     <router-outlet></router-outlet>
   </div>
-
 </div>
-
 

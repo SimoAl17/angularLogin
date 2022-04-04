@@ -1,1 +1,14 @@
-<p>restricted works!</p>
+<div class="container">
+    <div class="page">
+        <h1>Welcome to the secret part</h1>
+        <div *ngIf="loggedUser">
+            <span>Username: </span>
+            <span>{{loggedUser.username}}</span>
+        </div>
+        <div *ngIf="loggedUser">
+            <span>mail: </span>
+            <span>{{loggedUser.mail}}</span>
+        </div>
+
+    </div>
+</div>

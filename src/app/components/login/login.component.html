@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="container">
+    <div class="form-container">
+        <h2>Login</h2>
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input id="username" formControlName="username" matInput placeholder="Placeholder" type="text">
+                <mat-icon (click)="loginForm.controls['username'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='loginForm.controls["username"].touched && loginForm.controls["username"].invalid'>
+                <mat-error *ngIf="loginForm.controls['username'].errors && loginForm.controls['username'].errors['required']">Username obbligatorio</mat-error>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input id="password" formControlName="password" matInput placeholder="Placeholder" type="password">
+                <mat-icon (click)="loginForm.controls['password'].reset()" matSuffix>close</mat-icon>
+            </mat-form-field>
+            <div *ngIf='loginForm.controls["password"].touched && loginForm.controls["password"].invalid'>
+                <mat-error *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].errors['required']">Password obbligatoria</mat-error>
+            </div>
+            <button type="submit" mat-raised-button color="accent" [disabled]="loginForm.invalid">Login</button>
+        </form>
+        <div class="register-link">
+            <span>Se non sei registrato vai alla <a class="link" href="./signup">pagina di registrazione</a></span>
+        </div>
+    </div>
+</div>

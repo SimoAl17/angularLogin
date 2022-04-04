@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-restricted',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestrictedComponent implements OnInit {
 
-  constructor() { }
+  loggedUser?: User;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.loggedUser = this.auth.user;
   }
 
 }
